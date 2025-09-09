@@ -1,3 +1,5 @@
+import { Image } from "next";
+
 export default function ChatArea({ messages }) {
   return (
     <main className="w-[66vw] text-[15px] ml-[6vw] mt-[10px] overflow-auto flex-1 flex flex-col">
