@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import MainContent from "@/app/components/layout/MainContent";
 import Sidebar from "@/app/components/sidebar/Sidebar";
 import Overlay from "@/app/components/layout/Overlay";
@@ -9,6 +10,7 @@ import Modal from "@/app/components/modal/Modal";
 export default function AppFrame() {
   const [isSidebarOpen, sidebarToggle] = useToggle();
   const [isModalOpen, modalToggle] = useToggle();
+  const [messages, setMessages] = useState([]);
   return (
     <div className="flex">
       <Sidebar isSidebarOpen={isSidebarOpen} sidebarToggle={sidebarToggle} />
@@ -18,6 +20,8 @@ export default function AppFrame() {
         isSidebarOpen={isSidebarOpen}
         sidebarToggle={sidebarToggle}
         modalToggle={modalToggle}
+        messages={messages}
+        setMessages={setMessages}
       />
     </div>
   );
