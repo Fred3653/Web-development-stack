@@ -28,11 +28,10 @@ HTML/CSS 기초부터 React, Next.js, Supabase, Elasticsearch, OpenAI API까지 
 ├─ task2/ # CSS & Tailwind CSS로 디자인
 ├─ task3-1/ # JavaScript로 동적인 UI 구현
 ├─ task3-2/ # React로 동적인 UI 구현
-├─ task4_9/ # Next.js ~ OpenAI API (Git 버전 관리 적용)
+├─ task4_8/ # Next.js ~ OpenAI API (Git 버전 관리 적용)
 │ ├─ nextjs/ # Next.js 서버 환경 구축
 │ ├─ supabase/ # Supabase 데이터베이스 연결
 │ ├─ libraries/ # Next.js 라이브러리 기능 추가
-│ ├─ elasticsearch/ # Elasticsearch 검색 기능
 │ ├─ openai/ # OpenAI API 연동
 │ └─ prompts/ # 프롬프트 엔지니어링 적용
 ```
@@ -49,7 +48,7 @@ HTML/CSS 기초부터 React, Next.js, Supabase, Elasticsearch, OpenAI API까지 
 4. **Next.js로 서버 환경 구축**
 5. **Supabase 데이터베이스 연결**
 6. **Next.js 라이브러리 기능 추가**
-7. **Elasticsearch 검색 기능 구현** 8.ㅍ**OpenAI API 연동**
+7. **OpenAI API 연동**
 8. **프롬프트 엔지니어링 적용**
 
 ---
