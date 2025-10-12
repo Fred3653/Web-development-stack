@@ -1,5 +1,3 @@
-"use client";
-
 import Nav from "@/app/components/nav/Nav";
 import ChatArea from "@/app/components/chat/ChatArea";
 import InputForm from "@/app/components/forms/InputForm";

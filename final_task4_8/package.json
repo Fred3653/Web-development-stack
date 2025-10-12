@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/ss r": "^0.7.0",
-    "@supabase/supabase-js": "^2.57.4",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.75.0",
     "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "cookies-next": "^6.1.0",
