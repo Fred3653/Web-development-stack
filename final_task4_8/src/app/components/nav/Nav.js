@@ -1,6 +1,7 @@
 "use client";
-
+import { useAuth } from "@/app/contexts/Authprovider";
 export default function Nav({ isSidebarOpen, sidebarToggle, modalToggle }) {
+  const { user } = useAuth();
   return (
     <nav
       className={`h-[60px] flex justify-between ${
@@ -20,10 +21,18 @@ export default function Nav({ isSidebarOpen, sidebarToggle, modalToggle }) {
         </div>
       </button>
       <div className="inline-block text-[15px] m-[15px]">
-        <span>최민규 | </span>
-        <button onClick={modalToggle} type="button">
-          <span>마이페이지</span>
-        </button>
+        {user ? (
+          <>
+            <span>{user.email}</span>
+            <button onClick={modalToggle} type="button">
+              <span>마이페이지</span>
+            </button>
+          </>
+        ) : (
+          <button onClick={modalToggle} type="button">
+            <span>로그인</span>
+          </button>
+        )}
       </div>
     </nav>
   );
