@@ -8,7 +8,11 @@ export const AuthProvider = ({ initialSession, children }) => {
   const [session, setSession] = useState(initialSession);
   const [user, setUser] = useState(initialSession?.user ?? null);
 
-  // Context를 통해 로그인 상태 제공
+  useEffect(() => {
+    setSession(initialSession);
+    setUser(initialSession?.user ?? null);
+  }, [initialSession]);
+  
   const value = { 
     session,
     user,

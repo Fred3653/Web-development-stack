@@ -1,10 +1,18 @@
 "use client";
 import { useAuth } from "@/app/contexts/Authprovider";
 import { useRouter } from "next/navigation";
+import { logout } from "@/app/auth/actions";
 
 export default function Modal({ isModalOpen, modalToggle }) {
   const { user } = useAuth();
   const router = useRouter();
+  
+  const handleLogout = async () => {
+    await logout();
+    modalToggle();
+    router.refresh();
+  };
+  
   return (
     <div>
       {user ? (
@@ -28,7 +36,7 @@ export default function Modal({ isModalOpen, modalToggle }) {
             <p>이메일: fred3653@gmail.com</p>
             <p>학교: 경기과학고등학교</p>
             <p className="text-[14px] text-red-500">
-              <a>로그아웃</a>
+              <button onClick={handleLogout}>로그아웃</button>
             </p>
           </article>
           <footer className="b-4 border-t w-[85%] mx-auto mt-[10px]">
