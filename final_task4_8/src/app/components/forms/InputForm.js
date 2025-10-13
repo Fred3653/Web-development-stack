@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useAuth } from "@/app/contexts/Authprovider";
 
-export default function InputForm({ messages, setMessages }) {
+export default function InputForm({ messages, setMessages, modalToggle }) {
+  const { user } = useAuth();
   const [inputText, setInputText] = useState("");
   function handleText(e) {
     setInputText(e.target.value);
@@ -32,6 +34,10 @@ export default function InputForm({ messages, setMessages }) {
 
   const uploadMessages = (event) => {
     event.preventDefault();
+    if (!user) {
+      modalToggle();
+      return;
+    }
     setMessages((prev) => prev.concat({ previews, inputText }));
     setFiles([]);
     setInputText("");

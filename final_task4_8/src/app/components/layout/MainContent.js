@@ -17,7 +17,7 @@ export default function MainContent({
         modalToggle={modalToggle}
       />
       <ChatArea messages={messages} />
-      <InputForm messages={messages} setMessages={setMessages} />
+      <InputForm messages={messages} setMessages={setMessages} modalToggle={modalToggle} />
     </div>
   );
 }
