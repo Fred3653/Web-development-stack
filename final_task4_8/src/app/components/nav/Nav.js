@@ -23,7 +23,7 @@ export default function Nav({ isSidebarOpen, sidebarToggle, modalToggle }) {
       <div className="inline-block text-[15px] m-[15px]">
         {user ? (
           <>
-            <span>{user.email}</span>
+            <span>{user.user_metadata.full_name} | </span>
             <button onClick={modalToggle} type="button">
               <span>마이페이지</span>
             </button>

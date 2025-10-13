@@ -1,6 +1,6 @@
 import "./globals.css";
 import { AuthProvider } from "./contexts/Authprovider";
-import { getServerSupabase } from '@/utils/supabase/server';
+import { createClient } from '@/utils/supabase/server';
 
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const supabase = getServerSupabase();
+  const supabase = await createClient();
   const { data: { session } } = await supabase.auth.getSession();
   return (
     <html>

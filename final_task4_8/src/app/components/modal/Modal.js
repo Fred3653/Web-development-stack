@@ -1,8 +1,10 @@
 "use client";
 import { useAuth } from "@/app/contexts/Authprovider";
+import { useRouter } from "next/navigation";
 
 export default function Modal({ isModalOpen, modalToggle }) {
   const { user } = useAuth();
+  const router = useRouter();
   return (
     <div>
       {user ? (
@@ -64,7 +66,7 @@ export default function Modal({ isModalOpen, modalToggle }) {
             <button 
               className="w-full max-w-md py-3 px-4 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
               onClick={() => {
-                // 구글 로그인 로직 (사용자가 구현)
+                router.push('/auth/api/google');
               }}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
