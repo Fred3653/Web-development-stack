@@ -1,3 +1,5 @@
+'use client';
+
 import Nav from "@/app/components/nav/Nav";
 import ChatArea from "@/app/components/chat/ChatArea";
 import InputForm from "@/app/components/forms/InputForm";
@@ -6,8 +8,9 @@ export default function MainContent({
   isSidebarOpen,
   sidebarToggle,
   modalToggle,
-  messages,
-  setMessages,
+  optimisticMessages,
+  setOptimisticMessages,
+  backendMessages,
 }) {
   return (
     <div className="flex-1 flex flex-col items-center h-screen">
@@ -16,8 +19,8 @@ export default function MainContent({
         sidebarToggle={sidebarToggle}
         modalToggle={modalToggle}
       />
-      <ChatArea messages={messages} />
-      <InputForm messages={messages} setMessages={setMessages} modalToggle={modalToggle} />
+      <ChatArea optimisticMessages={optimisticMessages} backendMessages={backendMessages} />
+      <InputForm setOptimisticMessages={setOptimisticMessages} modalToggle={modalToggle} />
     </div>
   );
 }

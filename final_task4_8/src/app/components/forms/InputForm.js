@@ -2,22 +2,25 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/app/contexts/Authprovider";
+import { useRouter } from "next/navigation";
+import { uploadMessage } from "@/app/actions/messages";
 
-export default function InputForm({ messages, setMessages, modalToggle }) {
+export default function InputForm({ setOptimisticMessages, modalToggle }) {
   const { user } = useAuth();
   const [inputText, setInputText] = useState("");
+  const router = useRouter();
   function handleText(e) {
     setInputText(e.target.value);
   }
   const [files, setFiles] = useState([]);
-  const [previews, setPreviews] = useState([]);
+  const [urls, setUrls] = useState([]);
   function handleFiles(e) {
     setFiles(files.concat(Array.from(e.target.files)));
   }
 
   useEffect(() => {
     const newPreviews = files.map((file) => URL.createObjectURL(file));
-    setPreviews(newPreviews);
+    setUrls(newPreviews);
 
     return () => {
       newPreviews.forEach((url) => URL.revokeObjectURL(url));
@@ -32,22 +35,35 @@ export default function InputForm({ messages, setMessages, modalToggle }) {
     );
   };
 
-  const uploadMessages = (event) => {
+  const uploadMessages = async (event) => {
     event.preventDefault();
     if (!user) {
       modalToggle();
       return;
     }
-    setMessages((prev) => prev.concat({ previews, inputText }));
+
+    // optimistic update
+    setOptimisticMessages((prev) => prev.concat({ urls, inputText }));
     setFiles([]);
     setInputText("");
+    setUrls([]);
+
+    // upload message to server
+    const formData = new FormData();
+    formData.append('inputText', inputText);
+    files.forEach((file) => {
+      formData.append('files', file);
+    });
+    await uploadMessage(formData);
+    setOptimisticMessages([]);
+    router.refresh();
   };
 
   return (
     <footer className={`w-[70vw] flex flex-col`}>
       <FilePreviewLayout
         files={files}
-        previews={previews}
+        urls={urls}
         removeImg={removeImg}
       />
       <form
@@ -61,6 +77,7 @@ export default function InputForm({ messages, setMessages, modalToggle }) {
           placeholder="무엇이든 물어보세요."
           value={inputText}
           onChange={handleText}
+          autoComplete="off"
         />
         <input
           className="hidden"
@@ -99,7 +116,7 @@ export default function InputForm({ messages, setMessages, modalToggle }) {
     </footer>
   );
 }
-function FilePreviewLayout({ files, previews, removeImg }) {
+function FilePreviewLayout({ files, urls, removeImg }) {
   if (files.length == 0) {
     return null;
   }
@@ -109,7 +126,7 @@ function FilePreviewLayout({ files, previews, removeImg }) {
         files.length ? "h-[120px]" : "h-0"
       } flex flex-row justify-start`}
     >
-      {previews.map((previewUrl, index) => (
+      {urls.map((url, index) => (
         <div
           className="w-[80px] h-[80px] mt-[10px] mb-[30px] mr-[20px] relative"
           key={index}
@@ -121,7 +138,7 @@ function FilePreviewLayout({ files, previews, removeImg }) {
             X
           </button>
           <img
-            src={previewUrl}
+            src={url}
             className="w-[80px] h-[80px] object-cover rounded-2xl border-black border-[1px]"
           ></img>
         </div>

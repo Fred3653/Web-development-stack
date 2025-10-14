@@ -7,10 +7,10 @@ import Overlay from "@/app/components/layout/Overlay";
 import useToggle from "@/app/hooks/useToggle";
 import Modal from "@/app/components/modal/Modal";
 
-export default function AppFrame() {
+export default function AppFrame({ backendMessages }) {
   const [isSidebarOpen, sidebarToggle] = useToggle();
   const [isModalOpen, modalToggle] = useToggle();
-  const [messages, setMessages] = useState([]);
+  const [optimisticMessages, setOptimisticMessages] = useState([]);
   return (
     <div className="flex">
       <Sidebar isSidebarOpen={isSidebarOpen} sidebarToggle={sidebarToggle} />
@@ -20,8 +20,9 @@ export default function AppFrame() {
         isSidebarOpen={isSidebarOpen}
         sidebarToggle={sidebarToggle}
         modalToggle={modalToggle}
-        messages={messages}
-        setMessages={setMessages}
+        optimisticMessages={optimisticMessages}
+        setOptimisticMessages={setOptimisticMessages} 
+        backendMessages={backendMessages}
       />
     </div>
   );

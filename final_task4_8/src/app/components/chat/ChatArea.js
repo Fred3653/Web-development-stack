@@ -1,6 +1,8 @@
-import { Image } from "next";
+'use client';
 
-export default function ChatArea({ messages }) {
+export default function ChatArea({ optimisticMessages, backendMessages }) {
+  const messages = [...backendMessages, ...optimisticMessages]
+    
   return (
     <main className="w-[66vw] text-[15px] ml-[6vw] mt-[10px] overflow-auto flex-1 flex flex-col">
       <div>
@@ -11,20 +13,20 @@ export default function ChatArea({ messages }) {
         </p>
         {messages.map((message, index) => (
           <div className="my-3 flex flex-col" key={index}>
-            {message.previews.map((previewUrl, i) => (
+            {message.urls.map((url, i) => (
               <div className="w-[100px] h-[100px] mb-[5px] self-end" key={i}>
                 <img
-                  src={previewUrl}
+                  src={url}
                   className="w-[100px] h-[100px] object-cover rounded-2xl border-black border-[1px]"
                 ></img>
               </div>
             ))}
-            <div
+            {message.inputText && <div
               className="bg-black text-white rounded-full p-4 self-end"
               key={index}
             >
               {message.inputText}
-            </div>
+            </div>}
           </div>
         ))}
       </div>
