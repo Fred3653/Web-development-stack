@@ -31,9 +31,9 @@ HTML/CSS 기초부터 React, Next.js, Supabase, Elasticsearch, OpenAI API까지 
 ├─ task4_8/ # Next.js ~ OpenAI API (Git 버전 관리 적용)
 │ ├─ nextjs/ # Next.js 서버 환경 구축
 │ ├─ supabase/ # Supabase 데이터베이스 연결
-│ ├─ libraries/ # Next.js 라이브러리 기능 추가
-│ ├─ openai/ # OpenAI API 연동
-│ └─ prompts/ # 프롬프트 엔지니어링 적용
+│ ├─ openai/ # OpenAI API(or gemini api) 연동
+│ ├─ prompts/ # 프롬프트 엔지니어링 적용
+│ └─ libraries/ # Next.js 라이브러리 기능 추가
 ```
 
 ---
@@ -47,9 +47,9 @@ HTML/CSS 기초부터 React, Next.js, Supabase, Elasticsearch, OpenAI API까지 
    - React 버전
 4. **Next.js로 서버 환경 구축**
 5. **Supabase 데이터베이스 연결**
-6. **Next.js 라이브러리 기능 추가**
-7. **OpenAI API 연동**
-8. **프롬프트 엔지니어링 적용**
+6. **OpenAI API(or Gemini api) 연동**
+7. **프롬프트 엔지니어링 적용**
+8. 6. **Next.js 라이브러리 기능 추가**
 
 ---
 
@@ -65,3 +65,4 @@ HTML/CSS 기초부터 React, Next.js, Supabase, Elasticsearch, OpenAI API까지 
 - Name: Choi Mingyu
 - GitHub: https://github.com/fred3653
 - Email: fred3653@gmail.com
+
