@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/app/contexts/Authprovider";
 import { useRouter } from "next/navigation";
-import { uploadMessage } from "@/app/actions/messages";
+import { uploadMessage } from "@/app/actions/uploadMessage";
+import { makeAiMessage } from "@/app/actions/makeAiMessage";
 
 export default function InputForm({ setOptimisticMessages, modalToggle }) {
   const { user } = useAuth();
@@ -55,6 +56,7 @@ export default function InputForm({ setOptimisticMessages, modalToggle }) {
       formData.append('files', file);
     });
     await uploadMessage(formData);
+    await makeAiMessage();
     setOptimisticMessages([]);
     router.refresh();
   };

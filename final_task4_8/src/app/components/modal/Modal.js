@@ -20,8 +20,8 @@ export default function Modal({ isModalOpen, modalToggle }) {
           className={`w-[30vw] h-[21vw] fixed rounded-2xl top-1/2 left-1/2 -translate-x-1/2 border-4 z-20 bg-white   
             ${
               isModalOpen
-                ? "opacity-100 -translate-y-[50%] transition-all duration-300 ease-out"
-                : "opacity-0 -translate-y-[40%]"
+                ? "opacity-100 -translate-y-[50%] transition-all duration-300 ease-out pointer-events-auto"
+                : "opacity-0 -translate-y-[40%] pointer-events-none"
             }`}
         >
           <article className="m-8 space-y-2">
@@ -60,8 +60,8 @@ export default function Modal({ isModalOpen, modalToggle }) {
           className={`w-[30vw] h-[21vw] fixed rounded-2xl top-1/2 left-1/2 -translate-x-1/2 border-4 z-20 bg-white   
             ${
               isModalOpen
-                ? "opacity-100 -translate-y-[50%] transition-all duration-300 ease-out"
-                : "opacity-0 -translate-y-[40%]"
+                ? "opacity-100 -translate-y-[50%] transition-all duration-300 ease-out pointer-events-auto"
+                : "opacity-0 -translate-y-[40%] pointer-events-none"
             }`}
         >
           <div className="flex flex-col items-center pt-12 px-8">

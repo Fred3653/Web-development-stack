@@ -15,6 +15,7 @@ export default async function HomePage() {
   const backendMessages = data.map((message) => ({
     inputText: message.text,
     urls: message.attachments.files.map((file) => file.url),
+    role: message.role
   }));
   return (
     <div>
